@@ -1,0 +1,15 @@
+class Solution {
+    public List<Integer> findKDistantIndices(int[] nums, int key, int k) {
+        List<Integer> list=new ArrayList<>();
+        for(int j=0;j<nums.length;j++){
+            if(nums[j]==key){
+                for(int i=Math.max(0,j-k);i<=Math.min(nums.length-1,j+k);i++){
+                    list.add(i);
+                }
+            }
+        }
+        LinkedHashSet<Integer> uniqueSet = new LinkedHashSet<>(list);
+        list = new ArrayList<>(uniqueSet);
+        return list;
+    }
+}
