@@ -1,0 +1,19 @@
+class Solution {
+    public int minimumRightShifts(List<Integer> nums) {
+        for(int i=0;i<nums.size();i++){
+            if(sorted(nums)==0){
+               return i;
+            }
+             Collections.rotate(nums,1);
+        }
+        return -1;
+    }
+    int sorted(List<Integer> nums){
+            for(int i=0;i<nums.size()-1;i++){
+                if(nums.get(i)>nums.get(i+1)){
+                    return 1;
+                }
+            }
+            return 0;
+        }
+}
