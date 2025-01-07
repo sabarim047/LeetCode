@@ -1,0 +1,17 @@
+class Solution {
+    public int distinctAverages(int[] nums) {
+        Arrays.sort(nums);
+        Set<Double> result=new HashSet<>();
+        int min1=0;
+        int max1=nums.length-1;
+        while(min1<max1){
+            int min=nums[min1];
+            int max=nums[max1];
+            double avg=(min+max)/2.0;
+            result.add(avg);
+            min1++;
+            max1--;
+        }
+        return result.size();
+    }
+}
