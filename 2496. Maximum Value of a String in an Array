@@ -1,0 +1,21 @@
+class Solution {
+    public int maximumValue(String[] strs) {
+        int result=0;
+        for(int i=0;i<strs.length;i++){
+            boolean flag=true;
+            for(int j=0;j<strs[i].length();j++){
+                if(strs[i].charAt(j)<'0'||strs[i].charAt(j)>'9'){
+                    flag=false;
+                    break;
+                }
+            }
+        if(flag==false){
+                    result=Math.max(result,strs[i].length());
+                }
+        else{
+                result=Math.max(result,Integer.parseInt(strs[i]));
+            }
+        }
+        return result;
+    }
+}
