@@ -1,0 +1,34 @@
+class Solution {
+    public int[] sortEvenOdd(int[] nums) {
+        int n = nums.length;
+        int[] evenIndices = new int[(n + 1) / 2];  
+        int[] oddIndices = new int[n / 2];         
+        int evenPointer = 0, oddPointer = 0;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                evenIndices[evenPointer++] = nums[i];
+            } else {
+                oddIndices[oddPointer++] = nums[i];
+            }
+        }
+        Arrays.sort(evenIndices);
+        Arrays.sort(oddIndices);
+        for (int i = 0; i < oddIndices.length / 2; i++) {
+            int temp = oddIndices[i];
+            oddIndices[i] = oddIndices[oddIndices.length - 1 - i];
+            oddIndices[oddIndices.length - 1 - i] = temp;
+        }
+        evenPointer = 0;
+        oddPointer = 0;
+        
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                nums[i] = evenIndices[evenPointer++];
+            } else {
+                nums[i] = oddIndices[oddPointer++];
+            }
+        }
+        
+        return nums;
+    }
+}
