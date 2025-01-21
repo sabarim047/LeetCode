@@ -1,0 +1,18 @@
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        int n=nums.length;
+        long expectedSum = (long) n * (n + 1) / 2;
+        long expectedSquareSum = (long) n * (n + 1) * (2 * n + 1)/6;
+        long actualSum = 0;
+        long actualSquareSum = 0;
+        for (int num : nums) {
+            actualSum += num;
+            actualSquareSum += (long) num * num;
+        }
+        long diff = actualSum - expectedSum;
+        long sum = (actualSquareSum - expectedSquareSum) / diff;
+        int x = (int) (sum + diff) / 2;
+        int y = (int) (sum - diff) / 2;
+        return new int[]{x, y};
+    }
+}
