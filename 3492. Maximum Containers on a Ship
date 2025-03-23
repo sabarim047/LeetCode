@@ -1,0 +1,10 @@
+class Solution {
+    public int maxContainers(int n, int w, int maxWeight) {
+        int container=n*n;
+        int weight=container*w;
+        if(weight<=maxWeight){
+            return container;
+        }
+       return maxWeight/w;
+    }
+}
