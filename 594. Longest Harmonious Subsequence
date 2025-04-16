@@ -1,0 +1,16 @@
+class Solution {
+    public int findLHS(int[] nums) {
+        Map<Integer,Integer> maps=new HashMap<>();
+        for(int i : nums){
+            maps.put(i,maps.getOrDefault(i,0)+1);
+        }
+        int maximumLength=0;
+        for (Integer key : maps.keySet()) {
+            if(maps.containsKey(key+1)){
+                int maxLen=maps.get(key)+maps.get(key+1);
+                maximumLength=Math.max(maximumLength,maxLen);
+            }
+        }
+        return maximumLength;
+    }
+}
