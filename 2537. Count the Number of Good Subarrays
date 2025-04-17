@@ -1,0 +1,29 @@
+class Solution {
+    public long countGood(int[] nums, int k) {
+        Map<Integer,Integer> maps=new HashMap<>();
+        int n=nums.length;
+        long totalGoodSubArrays=0;
+        int pairs=0;
+        int l=0;
+        for(int r=0;r<n;r++){
+            int num=nums[r];
+            int currentFreq=maps.getOrDefault(num,0);
+            pairs+=currentFreq;
+            maps.put(num,currentFreq+1);
+            while(pairs>=k){
+                totalGoodSubArrays+=n-r;
+                int left=nums[l];
+                int freqOfLeft=maps.get(left);
+                pairs-=(freqOfLeft-1);
+                if(freqOfLeft==1){
+                    maps.remove(left);
+                }
+                else{
+                    maps.put(left,freqOfLeft-1);
+                }
+                l++;
+            }
+        }
+        return totalGoodSubArrays;
+    }
+}
