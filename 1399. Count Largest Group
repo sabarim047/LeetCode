@@ -1,0 +1,28 @@
+class Solution {
+    public int countLargestGroup(int n) {
+       Map<Integer,Integer> maps=new HashMap<>();
+       for(int i=1;i<=n;i++){
+        int sum=getDigitSum(i);
+        maps.put(sum,maps.getOrDefault(sum,0)+1);
+       } 
+       int maxSize=0;
+       for(int size :maps.values()){
+        maxSize=Math.max(maxSize,size);
+       }
+       int count=0;
+       for(int size : maps.values()){
+        if(size==maxSize){
+            count++;
+        }
+       }
+       return count;
+    }
+    int getDigitSum(int n){
+        int sum=0;
+        while(n>0){
+            sum+=n%10;
+            n=n/10;
+        }
+        return sum;
+       }
+}
