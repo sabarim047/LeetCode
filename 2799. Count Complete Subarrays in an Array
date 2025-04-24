@@ -1,0 +1,21 @@
+class Solution {
+    public int countCompleteSubarrays(int[] nums) {
+        int count=0;
+        int n=nums.length;
+        Set<Integer> set=new HashSet<>();
+        for(int num : nums){
+            set.add(num);
+        }
+        int totalDistinct=set.size();
+        for(int i=0;i<n;i++){
+            Set<Integer> sets=new HashSet<>();
+            for(int j=i;j<n;j++){
+                sets.add(nums[j]);
+                if(sets.size()==totalDistinct){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
