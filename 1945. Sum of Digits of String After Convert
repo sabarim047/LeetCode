@@ -1,0 +1,22 @@
+class Solution {
+    public int getLucky(String s, int k) {
+        StringBuilder str=new StringBuilder();
+        for(char ch :s.toCharArray()){
+            int pos=ch-'a'+1;
+            str.append(pos);
+        }
+        int result=0;
+        for(char digit : str.toString().toCharArray()){
+            result=result+digit-'0';
+        }
+        for(int i=0;i<k-1;i++){
+            int sum=0;
+            while(result>0){
+                sum=sum+result%10;
+                result=result/10;
+            }
+            result=sum;
+        }
+        return result;
+    }
+}
